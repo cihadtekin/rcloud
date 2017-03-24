@@ -1,0 +1,9 @@
+[Unit]
+Description=tmp file serve
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/nodejs /home/username/rcloud/tmpfileserver/server.js
+
+[Install]
+WantedBy=multi-user.target

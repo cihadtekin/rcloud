@@ -40,6 +40,13 @@
             })[0];
     }
 
+    function spectraviewer_link(key, value) {
+        return $('<a/>', {href: '#'}).text(('text' in value) ? value.text : 'Spectra')
+            .click(function() {
+                enviewer_state().ocaps.view_spectracontent();
+            })[0];
+    }
+
     function add_section(title, section, rows) {
         // styling the table will go better with CSS
         var header_style = 'border: 0; background-color: #dedede; font-family: sans-serif; font-size: 13px';
@@ -59,6 +66,9 @@
                     switch(section[key].command) {
                     case 'view':
                         items.push(td(dataframe_link(key, section[key])));
+                        break;
+                    case 'viewspectra':
+                        items.push(td(spectraviewer_link(key, section[key])), td(section[key].value));
                         break;
                     default:
                         throw new Error('unknown rcloud.enviewer command ' + key);
@@ -94,7 +104,7 @@
     }
 return {
     init: function(ocaps, k) {
-        ocaps = RCloud.promisify_paths(ocaps, [["refresh"], ["view_dataframe"]], true);
+        ocaps = RCloud.promisify_paths(ocaps, [["refresh"], ["view_dataframe"], ["view_spectracontent"]], true);
         if(window.shell) { // are we running in RCloud UI?
             var state = enviewer_state();
             if(state) {// update with new connection

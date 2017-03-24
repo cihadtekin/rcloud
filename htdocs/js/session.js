@@ -63,7 +63,21 @@ var oob_sends = {
         RCloud.UI.help_frame.display_href(url);
     },
     "browseURL": function(ctx, v) {
-        window.open(v, "_blank");
+        var cont = $(".r-result-div");
+        if (cont[0]) {
+            var iframe = $("<iframe/>").css({
+                "width": "100%",
+                "min-height": "500px",
+                "border": "none"
+            });
+            // dont know why but something is removing the content of .r-result-div
+            // after we set it (this is only happening after the first run). so..
+            setTimeout(function(){ cont.prepend(iframe) }, 500);
+            iframe[0].src = window.location.protocol + "//" + window.location.hostname + ":9999" + v;
+        } else {
+            // Default behavior
+            window.open(v, "_blank");
+        }
     },
     "pager": function(ctx, files, header, title) {
         var html = "<h2>" + title + "</h2>\n";

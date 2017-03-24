@@ -1,0 +1,9 @@
+Package: rcloud.spectraviewer
+Title: Spectra class methods viewer support for RCloud
+Version: 0.1
+Author: Cihad Tekin <cihadtekin@gmail.com>
+Maintainer: Cihad Tekin <cihadtekin@gmail.com>
+Description: rcloud.spectraviewer show methods of the spectra class
+Depends: rcloud.support
+NOTE: --- packages that are not on CRAN/RForge.net *must* be in Suggests! ---
+License: MIT

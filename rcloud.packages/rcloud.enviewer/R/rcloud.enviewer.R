@@ -5,6 +5,10 @@ rcloud.enviewer.refresh <- function()
 rcloud.enviewer.view.dataframe <- function(expr)
   View(get(expr, .GlobalEnv))
 
+# EDIT
+rcloud.enviewer.view.spectracontent <- function()
+  SpectraViewer()
+
 ## -- how to handle each group --
 rcloud.enviewer.display.dataframe <- function(x, val)
   structure(list(command="view", object=x, text=paste0("data.frame [",paste(dim(val), collapse=', '),"]")), class="data")
@@ -21,7 +25,12 @@ rcloud.enviewer.display.value <- function(val) {
     if (any(too.long <- (nchar(str) > 100)))
         str[too.long] <- paste(substr(str[too.long], 1, 100), "...")
     if (length(str) > 1L) str <- paste(str, collapse='\n')
-    structure(list(type=type, value=str), class="values")
+    ## EDIT
+    if (inherits(val, "Spectra")) {
+        structure(list(type=type, value=str, command="viewspectra", text="Spectra"), class="values")
+    } else {
+        structure(list(type=type, value=str), class="values")
+    }
 }
 
 rcloud.enviewer.display.function <- function(f)

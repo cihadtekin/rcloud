@@ -1,0 +1,14 @@
+{
+  "name": "tmpfileserver",
+  "version": "1.0.0",
+  "description": "Serves files created by R's plotly package",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Cihad Tekin <cihadtekin@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}

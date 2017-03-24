@@ -11,7 +11,8 @@ rcloud.enviewer.caps <- NULL
   rcloud.enviewer.caps <<- f("rcloud.enviewer", "rcloud.enviewer.js")
   if(!is.null(rcloud.enviewer.caps)) {
     ocaps <- list(refresh = rcloud.support:::make.oc(rcloud.enviewer.refresh),
-                  view_dataframe = rcloud.support:::make.oc(rcloud.enviewer.view.dataframe))
+                  view_dataframe = rcloud.support:::make.oc(rcloud.enviewer.view.dataframe),
+                  view_spectracontent = rcloud.support:::make.oc(rcloud.enviewer.view.spectracontent))
     rcloud.enviewer.caps$init(ocaps)
   }
 }
